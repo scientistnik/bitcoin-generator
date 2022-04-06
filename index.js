@@ -10,11 +10,6 @@ let currAddr = "";
 const findPrefix = (addr) =>
   wantPrefixes.find((want) => addr.slice(0, want.length).toLowerCase() == want);
 
-const { Database } = sqlite3.verbose();
-
-const db = new Database("database.db");
-db.run("CREATE TABLE IF NOT EXISTS addresses (address TEXT, key TEXT)", main);
-
 const main = () => {
   for (let i = 1; wantPrefixes.length != 0 && !FORCE_EXIT; i++) {
     const keyPair = bitcoin.ECPair.makeRandom();
@@ -39,6 +34,11 @@ const main = () => {
 
   finish();
 };
+
+const { Database } = sqlite3.verbose();
+
+const db = new Database("database.db");
+db.run("CREATE TABLE IF NOT EXISTS addresses (address TEXT, key TEXT)", main);
 
 const finish = () => {
   console.log(findPrefix(currAddr), FORCE_EXIT);
