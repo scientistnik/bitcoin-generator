@@ -1,0 +1,11 @@
+{
+  "name": "generator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "bitcoinjs-lib": "^5.2.0",
+    "sqlite3": "^5.0.2"
+  }
+}
