@@ -107,3 +107,4 @@ dist
 addresses.json
 database.db
 yarn.lock
+.vscode
