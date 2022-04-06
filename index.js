@@ -10,6 +10,11 @@ let currAddr = "";
 const findPrefix = (addr) =>
   wantPrefixes.find((want) => addr.slice(0, want.length).toLowerCase() == want);
 
+process.on("SIGINT", () => {
+  console.log("catch SIGINT...");
+  FORCE_EXIT = true;
+});
+
 const main = () => {
   for (let i = 1; wantPrefixes.length != 0 && !FORCE_EXIT; i++) {
     const keyPair = bitcoin.ECPair.makeRandom();
@@ -45,7 +50,3 @@ const finish = () => {
   db.close();
 };
 
-process.on("SIGINT", () => {
-  console.log("catch SIGINT...");
-  FORCE_EXIT = true;
-});
