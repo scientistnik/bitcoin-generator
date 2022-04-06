@@ -106,3 +106,4 @@ dist
 # user files
 addresses.json
 database.db
+yarn.lock
