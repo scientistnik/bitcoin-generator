@@ -43,6 +43,7 @@ const cycle = () => {
 
 const main = async () => {
   if (wantPrefixes.length != 0 && !FORCE_EXIT) {
+    wantPrefixes = JSON.parse(fs.readFileSync("addresses.json").toString());
     for (let j = 0; j < 1000; j++) cycle();
   } else finish();
 
